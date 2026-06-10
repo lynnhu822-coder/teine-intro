@@ -31,15 +31,16 @@ body{background:var(--ink);color:var(--snow);font-family:'Noto Sans TC',sans-ser
 .countdown-bar-num{font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--ink);letter-spacing:1px;min-width:22px;text-align:center;}
 .countdown-bar-sep{color:rgba(0,0,0,.3);font-size:13px;}
 .countdown-bar-label{font-size:9px;color:rgba(0,0,0,.45);letter-spacing:1px;}
-.global-nav{position:fixed;top:36px;left:0;right:0;z-index:200;transition:background .4s;background:transparent;}
-.global-nav.scrolled{backdrop-filter:blur(16px);}
-.nav-top{display:flex;justify-content:space-between;align-items:center;padding:20px 48px;position:relative;z-index:1;}
-
-.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:4px;color:var(--snow);text-decoration:none;position:relative;z-index:1;}
+/* NAV */
+nav{position:fixed;top:36px;left:0;right:0;z-index:100;padding:24px 48px;display:flex;justify-content:space-between;align-items:center;}
+nav::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(44,53,64,.9) 0%,transparent 100%);pointer-events:none;}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:4px;color:var(--snow);text-decoration:none;position:relative;z-index:1;margin-right:auto;}
 .nav-logo .ski{color:var(--brand);}
-.nav-top::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(44,53,64,.9) 0%,transparent 100%);pointer-events:none;}
-.nav-messenger{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:3px;color:var(--snow);border:1px solid rgba(245,243,239,.3);padding:9px 20px;text-decoration:none;transition:all .3s;position:relative;z-index:1;}
-.nav-messenger:hover{background:var(--brand);border-color:var(--brand);}
+.nav-links{display:flex;gap:32px;list-style:none;position:relative;z-index:1;}
+.nav-links a{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(245,243,239,.75);text-decoration:none;transition:color .3s;}
+.nav-links a:hover{color:var(--snow);}
+.nav-cta{position:relative;z-index:1;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:3px;color:var(--snow);border:1px solid rgba(245,243,239,.35);padding:10px 22px;text-decoration:none;transition:all .3s;}
+.nav-cta:hover{background:var(--brand);border-color:var(--brand);}
 
 /* ══ HAMBURGER ══ */
 .hamburger-btn{display:flex;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:none;border:none;cursor:pointer;padding:4px;position:relative;z-index:1;}
@@ -238,7 +239,7 @@ body{background:var(--ink);color:var(--snow);font-family:'Noto Sans TC',sans-ser
 .why-card-body{font-size:13px;color:rgba(245,243,239,.55);line-height:1.9;letter-spacing:.3px;}
 
 /* ══ SCENE DIVIDER ══ */
-.scene-divider{position:relative;height:420px;overflow:hidden;background-image:url('https://www.iski.com.tw/image/catalog/teine/Lrc-99.jpg');background-size:cover;background-position:center;background-attachment:fixed;display:flex;align-items:center;justify-content:center;}
+.scene-divider{position:relative;height:420px;overflow:hidden;background-image:url('https://www.iski.com.tw/image/catalog/%E6%97%A5%E6%9C%AC%E9%9B%AA%E5%A0%B4/landing%20page%202026/DSC02428%20%E6%8B%B7%E8%B2%9D.jpg?_t=1781061404');background-size:cover;background-position:center;background-attachment:fixed;display:flex;align-items:center;justify-content:center;}
 .scene-divider::before{content:'';position:absolute;inset:0;background:rgba(22,29,36,.52);}
 .scene-divider-content{position:relative;z-index:2;text-align:center;}
 .scene-divider-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,9vw,112px);letter-spacing:.15em;color:var(--snow);line-height:.9;text-shadow:0 4px 32px rgba(0,0,0,.5);}
@@ -344,6 +345,20 @@ body{background:var(--ink);color:var(--snow);font-family:'Noto Sans TC',sans-ser
 .access-img-wrap:last-child{margin-bottom:0;}
 .access-img-context{font-size:13px;color:rgba(245,243,239,.65);line-height:2;letter-spacing:.3px;margin-bottom:20px;}
 
+/* ══ ITINERARY TABS ══ */
+.itin-tabs{display:flex;gap:3px;margin-top:40px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+.itin-tabs::-webkit-scrollbar{display:none;}
+.itin-tab{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:3px;padding:14px 24px;border:none;cursor:pointer;white-space:nowrap;transition:all .2s;background:rgba(245,243,239,.08);color:rgba(245,243,239,.45);}
+.itin-tab.active{background:var(--yellow);color:var(--ink);}
+.itin-tab:hover:not(.active){background:rgba(245,243,239,.15);color:var(--snow);}
+.itin-panels{margin-top:3px;}
+.itin-panel{display:none;padding:40px 44px;background:rgba(245,243,239,.03);border:1px solid rgba(245,243,239,.07);}
+.itin-panel.active{display:block;}
+@media(max-width:768px){
+  .itin-tab{font-size:13px;padding:12px 18px;}
+  .itin-panel{padding:28px 24px;}
+}
+
 /* ══ ITINERARY ══ */
 .itinerary-section{background:var(--ink-mid);padding:80px 60px;border-top:1px solid rgba(245,243,239,.06);}
 .itinerary-inner{max-width:760px;margin:0 auto;}
@@ -396,8 +411,9 @@ footer{border-top:1px solid rgba(245,243,239,.07);padding:40px 60px;display:flex
 @media(max-width:768px){
   .countdown-bar{gap:8px;}
 
-  .nav-top{padding:16px 20px;}
-  .nav-messenger{display:none;}
+  nav{top:36px;padding:16px 20px;}
+  .nav-links,.nav-cta{display:none;}
+  .hamburger-btn{display:flex;}
   .hero{height:100svh;}
   .hero-content{padding:0 24px 64px;}
   .scroll-hint{right:20px;}
@@ -417,9 +433,11 @@ footer{border-top:1px solid rgba(245,243,239,.07);padding:40px 60px;display:flex
   .map-ping{display:none;}
   .map-title-row{flex-direction:column;align-items:flex-start;gap:4px;}
   .explore-section .explore-header{padding-left:24px !important;padding-right:24px !important;}
-  .explore-scroll-track{padding-left:24px !important;}
+  .explore-scroll-track{padding-left:24px !important;padding-right:0 !important;}
+  .explore-scroll-track .explore-card:first-child{width:calc(100vw - 60px) !important;}
+  .explore-scroll-track .explore-card{width:calc(100vw - 80px) !important;}
   .explore-section,.access-section{padding-left:24px;padding-right:24px;}
-  .scene-divider{background-attachment:scroll;height:320px;}
+  .scene-divider{background-attachment:scroll;height:320px;background-position:left center;}
   .why-section{padding:60px 24px;}
   .why-grid{grid-template-columns:1fr;}
   .why-card{padding:28px 24px;}
@@ -428,6 +446,7 @@ footer{border-top:1px solid rgba(245,243,239,.07);padding:40px 60px;display:flex
   .access-grid{grid-template-columns:1fr;}
   .cta-wrap{grid-template-columns:1fr;padding:48px 24px;}
   .cta-buttons{margin-top:32px;gap:12px;}
+  .video-section-inner{padding:48px 16px !important;}
   footer{flex-direction:column;gap:24px;text-align:center;padding:32px 24px;}
   .footer-links{display:none;}
   .footer-social{width:100%;justify-content:center;gap:12px;flex-wrap:nowrap;}
@@ -489,15 +508,14 @@ footer{border-top:1px solid rgba(245,243,239,.07);padding:40px 60px;display:flex
 </div>
 
 <!-- NAV -->
-<nav class="global-nav" id="globalNav">
-  <div class="nav-top">
-    <a href="https://www.iski.com.tw/" class="nav-logo" style="display:flex;align-items:center;"><img src="https://stage.iski.com.tw/image/catalog/snowing/01.home/link/M/M_Website_home logo01.png" alt="iSKI" style="height:28px;"></a>
-    <div style="display:flex;align-items:center;gap:16px;position:relative;z-index:1;">
-      <a href="http://m.me/iSKIclub2019" class="nav-messenger" target="_blank">聯絡客服</a>
-      <button class="hamburger-btn" id="hamburgerBtn" aria-label="選單" onclick="toggleMobileMenu()">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+<nav id="globalNav">
+  <a href="https://www.iski.com.tw/" class="nav-logo"><img src="https://stage.iski.com.tw/image/catalog/snowing/01.home/link/M/M_Website_home logo01.png" alt="iSKI" style="height:28px;width:auto;display:block;"></a>
+  <ul class="nav-links"></ul>
+  <div style="display:flex;align-items:center;gap:12px;position:relative;z-index:1;">
+    <a href="http://m.me/iSKIclub2019" class="nav-cta" target="_blank">聯絡客服</a>
+    <button class="hamburger-btn" id="hamburgerBtn" aria-label="選單" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
@@ -601,7 +619,7 @@ footer{border-top:1px solid rgba(245,243,239,.07);padding:40px 60px;display:flex
       <div class="why-card" onmouseover="this.style.borderColor='rgba(212,245,60,.25)'" onmouseout="this.style.borderColor='rgba(245,243,239,.07)'">
         <div class="why-card-num">02</div>
         <p class="why-card-eyebrow">親子同行</p>
-        <h4 class="why-card-title">大人滑雪，小孩也沒閒著</h4>
+        <h4 class="why-card-title">大人滑雪，小孩放電</h4>
         <p class="why-card-body">恐龍主題樂園、雪橇道、雪管道、Olympia Zone 專屬初學坡——這是小朋友的天堂。</p>
       </div>
       <div class="why-card" onmouseover="this.style.borderColor='rgba(212,245,60,.25)'" onmouseout="this.style.borderColor='rgba(245,243,239,.07)'">
@@ -631,7 +649,6 @@ footer{border-top:1px solid rgba(245,243,239,.07);padding:40px 60px;display:flex
       <h2 class="juhyo-title">你來滑雪，<br>卻愛上了<br>這座城市。</h2>
       <p class="juhyo-jp">手　稻　山　頂　絶　景</p>
       <p class="juhyo-desc">海拔 1,023 公尺的手稻山頂，俯瞰整個札幌都市圈與石狩灣。山頂視野是手稻最強的情感衝擊——轉彎之前，先被這片景色愣住幾秒。<br><br>北海道的乾燥粉雪加上這個視野，會讓你明白為什麼每年都有人回來。</p>
-      <span class="juhyo-tag">HIGHLAND ZONE · 1,023M SUMMIT · 石狩灣 ISHIKARI BAY</span>
     </div>
   </div>
 </div>
@@ -686,7 +703,6 @@ footer{border-top:1px solid rgba(245,243,239,.07);padding:40px 60px;display:flex
         <p class="map-subtitle"></p>
       </div>
     </div>
-    <p class="map-intro reveal">Highland Zone 挑戰奧運坡道；Olympia Zone 親子初學皆宜。兩個 Zone，同一座山，找到屬於你的路線。</p>
     <div class="map-wrap reveal">
       <img src="https://www.iski.com.tw/image/catalog/teine/map-park.jpg" alt="手稻滑雪場地圖">
       <div class="map-ping">
@@ -717,7 +733,7 @@ footer{border-top:1px solid rgba(245,243,239,.07);padding:40px 60px;display:flex
 
 <!-- VIDEO -->
 <section style="background:var(--ink-mid);padding:80px 60px;border-top:1px solid rgba(245,243,239,.06);">
-  <div style="max-width:1200px;margin:0 auto;">
+  <div class="video-section-inner" style="max-width:1200px;margin:0 auto;">
     <p class="section-label">OFFICIAL VIDEO</p>
     <h3 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,4vw,52px);letter-spacing:.1em;color:var(--snow);margin-bottom:32px;" class="reveal">感受手稻的魅力</h3>
     <div class="reveal" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border:1px solid rgba(245,243,239,.07);">
@@ -810,9 +826,6 @@ footer{border-top:1px solid rgba(245,243,239,.07);padding:40px 60px;display:flex
         </div>
       </div>
     </div>
-    <div style="text-align:center;padding:0 60px;">
-      <span style="font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:3px;color:rgba(245,243,239,.3);">← 滑動探索更多 →</span>
-    </div>
   </div>
 </section>
 
@@ -823,85 +836,64 @@ footer{border-top:1px solid rgba(245,243,239,.07);padding:40px 60px;display:flex
     <p class="section-label">ITINERARY</p>
     <h3 class="why-heading reveal">五天，剛剛好。</h3>
     <p class="why-sub reveal">五　日　間　の　旅　の　リ　ズ　ム</p>
-    <div class="itinerary-list reveal rd1">
-      <div class="itinerary-item">
-        <div class="itinerary-day-col">
-          <p class="itinerary-day-label">DAY</p>
-          <p class="itinerary-day-num">01</p>
-        </div>
-        <div class="itinerary-dot"></div>
-        <div class="itinerary-content-col">
-          <p class="itinerary-title">飛抵札幌，城市入夜</p>
-          <p class="itinerary-body">新千歲機場 → 地鐵直達市區，安頓後走進狸小路。晚上去薄野——霓虹、海鮮、北海道生啤，明天開始正式行程。</p>
-          <div class="itinerary-tags">
-            <span class="itinerary-tag">狸小路</span>
-            <span class="itinerary-tag">薄野</span>
-            <span class="itinerary-tag">海鮮晚餐</span>
-          </div>
-        </div>
-      </div>
-      <div class="itinerary-item">
-        <div class="itinerary-day-col">
-          <p class="itinerary-day-label">DAY</p>
-          <p class="itinerary-day-num">02</p>
-        </div>
-        <div class="itinerary-dot"></div>
-        <div class="itinerary-content-col">
-          <p class="itinerary-title">手稻滑雪 · 夜訪大通公園</p>
-          <p class="itinerary-body">早上搭車 40 分鐘到手稻，全天滑雪課程。傍晚下山，晚上走到大通公園——雪祭期間燈光倒映在雪地上，白天完全不同的城市表情。</p>
-          <div class="itinerary-tags">
-            <span class="itinerary-tag">手稻滑雪</span>
-            <span class="itinerary-tag">大通公園</span>
-            <span class="itinerary-tag">夜景</span>
-          </div>
+
+    <div class="itin-tabs reveal rd1">
+      <button class="itin-tab active" onclick="switchDay(0)">DAY 01</button>
+      <button class="itin-tab" onclick="switchDay(1)">DAY 02</button>
+      <button class="itin-tab" onclick="switchDay(2)">DAY 03</button>
+      <button class="itin-tab" onclick="switchDay(3)">DAY 04</button>
+      <button class="itin-tab" onclick="switchDay(4)">DAY 05</button>
+    </div>
+
+    <div class="itin-panels reveal rd2">
+      <div class="itin-panel active">
+        <p class="itinerary-day-label">DAY 01</p>
+        <p class="itinerary-title">飛抵札幌，城市入夜</p>
+        <p class="itinerary-body">新千歲機場 → 地鐵直達市區，安頓後走進狸小路。晚上去薄野——霓虹、海鮮、北海道生啤，明天開始正式行程。</p>
+        <div class="itinerary-tags">
+          <span class="itinerary-tag">狸小路</span>
+          <span class="itinerary-tag">薄野</span>
+          <span class="itinerary-tag">海鮮晚餐</span>
         </div>
       </div>
-      <div class="itinerary-item">
-        <div class="itinerary-day-col">
-          <p class="itinerary-day-label">DAY</p>
-          <p class="itinerary-day-num">03</p>
-        </div>
-        <div class="itinerary-dot"></div>
-        <div class="itinerary-content-col">
-          <p class="itinerary-title">手稻滑雪 · 藻岩山夜景</p>
-          <p class="itinerary-body">再一天手稻，課程加深、雪感加穩。傍晚搭纜車上藻岩山——日本三大夜景之一，札幌市區燈光在腳下展開，滑雪後的絕佳句點。</p>
-          <div class="itinerary-tags">
-            <span class="itinerary-tag">手稻滑雪</span>
-            <span class="itinerary-tag">藻岩山</span>
-            <span class="itinerary-tag">日本三大夜景</span>
-          </div>
+      <div class="itin-panel">
+        <p class="itinerary-day-label">DAY 02</p>
+        <p class="itinerary-title">手稻滑雪 · 夜訪大通公園</p>
+        <p class="itinerary-body">早上搭車 40 分鐘到手稻，全天滑雪課程。傍晚下山，晚上走到大通公園——雪祭期間燈光倒映在雪地上，白天完全不同的城市表情。</p>
+        <div class="itinerary-tags">
+          <span class="itinerary-tag">手稻滑雪</span>
+          <span class="itinerary-tag">大通公園</span>
+          <span class="itinerary-tag">夜景</span>
         </div>
       </div>
-      <div class="itinerary-item">
-        <div class="itinerary-day-col">
-          <p class="itinerary-day-label">DAY</p>
-          <p class="itinerary-day-num">04</p>
-        </div>
-        <div class="itinerary-dot"></div>
-        <div class="itinerary-content-col">
-          <p class="itinerary-title">小樽一日</p>
-          <p class="itinerary-body">搭 JR 快車 30 分鐘到小樽。雪中運河、玻璃工藝、海鮮壽司、甜點老舖——白天逛完，留下來等夜燈亮起，運河倒影是北海道冬天最浪漫的畫面。</p>
-          <div class="itinerary-tags">
-            <span class="itinerary-tag">小樽運河</span>
-            <span class="itinerary-tag">海鮮壽司</span>
-            <span class="itinerary-tag">雪夜燈光</span>
-          </div>
+      <div class="itin-panel">
+        <p class="itinerary-day-label">DAY 03</p>
+        <p class="itinerary-title">手稻滑雪 · 藻岩山夜景</p>
+        <p class="itinerary-body">再一天手稻，課程加深、雪感加穩。傍晚搭纜車上藻岩山——日本三大夜景之一，札幌市區燈光在腳下展開，滑雪後的絕佳句點。</p>
+        <div class="itinerary-tags">
+          <span class="itinerary-tag">手稻滑雪</span>
+          <span class="itinerary-tag">藻岩山</span>
+          <span class="itinerary-tag">日本三大夜景</span>
         </div>
       </div>
-      <div class="itinerary-item">
-        <div class="itinerary-day-col">
-          <p class="itinerary-day-label">DAY</p>
-          <p class="itinerary-day-num">05</p>
+      <div class="itin-panel">
+        <p class="itinerary-day-label">DAY 04</p>
+        <p class="itinerary-title">小樽一日</p>
+        <p class="itinerary-body">搭 JR 快車 30 分鐘到小樽。雪中運河、玻璃工藝、海鮮壽司、甜點老舖——白天逛完，留下來等夜燈亮起，運河倒影是北海道冬天最浪漫的畫面。</p>
+        <div class="itinerary-tags">
+          <span class="itinerary-tag">小樽運河</span>
+          <span class="itinerary-tag">海鮮壽司</span>
+          <span class="itinerary-tag">雪夜燈光</span>
         </div>
-        <div class="itinerary-dot"></div>
-        <div class="itinerary-content-col">
-          <p class="itinerary-title">朝食、伴手禮、回程</p>
-          <p class="itinerary-body">早上去二条市場吃海膽丼，白色戀人公園採購伴手禮，下午搭地鐵回新千歲。整趟行程不需要租車——城市本身就是最好的交通工具。</p>
-          <div class="itinerary-tags">
-            <span class="itinerary-tag">二条市場</span>
-            <span class="itinerary-tag">白色戀人公園</span>
-            <span class="itinerary-tag">地鐵直達機場</span>
-          </div>
+      </div>
+      <div class="itin-panel">
+        <p class="itinerary-day-label">DAY 05</p>
+        <p class="itinerary-title">朝食、伴手禮、回程</p>
+        <p class="itinerary-body">早上去二条市場吃海膽丼，白色戀人公園採購伴手禮，下午搭地鐵回新千歲。整趟行程不需要租車——城市本身就是最好的交通工具。</p>
+        <div class="itinerary-tags">
+          <span class="itinerary-tag">二条市場</span>
+          <span class="itinerary-tag">白色戀人公園</span>
+          <span class="itinerary-tag">地鐵直達機場</span>
         </div>
       </div>
     </div>
@@ -918,16 +910,16 @@ footer{border-top:1px solid rgba(245,243,239,.07);padding:40px 60px;display:flex
 
     <div class="access-img-block reveal">
       <p class="access-img-context">選擇你的出發點，手稻距離比你想的更近。</p>
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;margin-top:4px;">
-        <span style="font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:3px;color:var(--yellow);">FROM SAPPORO</span>
-        <span style="font-size:12px;color:rgba(245,243,239,.55);letter-spacing:1px;">札幌出發</span>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;margin-top:4px;padding:12px 16px;background:rgba(212,245,60,.08);border-left:3px solid var(--yellow);">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:3px;color:var(--yellow);">FROM SAPPORO</span>
+        <span style="font-size:14px;color:rgba(245,243,239,.75);letter-spacing:1px;">札幌出發</span>
       </div>
       <div class="access-img-wrap">
         <img src="https://www.iski.com.tw/image/catalog/teine/trip/%E4%BA%A4%E9%80%9A%E8%B3%87%E8%A8%8A_%E5%BE%9E%E6%9C%AD%E5%B9%8C%E5%87%BA%E7%99%BC.png" alt="從札幌出發交通資訊">
       </div>
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;margin-top:16px;">
-        <span style="font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:3px;color:var(--yellow);">FROM NEW CHITOSE</span>
-        <span style="font-size:12px;color:rgba(245,243,239,.55);letter-spacing:1px;">新千歲機場出發</span>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;margin-top:16px;padding:12px 16px;background:rgba(212,245,60,.08);border-left:3px solid var(--yellow);">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:3px;color:var(--yellow);">FROM NEW CHITOSE</span>
+        <span style="font-size:14px;color:rgba(245,243,239,.75);letter-spacing:1px;">新千歲機場出發</span>
       </div>
       <div class="access-img-wrap">
         <img src="https://www.iski.com.tw/image/catalog/teine/trip/%E4%BA%A4%E9%80%9A%E8%B3%87%E8%A8%8A_%E5%BE%9E%E6%96%B0%E5%8D%83%E6%AD%B2%E6%A9%9F%E5%A0%B4%E5%87%BA%E7%99%BC.png" alt="從新千歲機場出發交通資訊">
@@ -1038,8 +1030,8 @@ document.querySelectorAll('a,button,.explore-card,.why-card,.stat,.access-card')
 })();
 
 // Nav scroll
-const nav = document.getElementById('globalNav');
-window.addEventListener('scroll', ()=>{ nav.classList.toggle('scrolled', window.scrollY > 60); });
+
+
 
 // Hamburger
 function toggleMobileMenu(){
@@ -1085,7 +1077,13 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   });
 })();
 
-// Drag to scroll - explore
+// Itinerary tabs
+function switchDay(idx){
+  document.querySelectorAll('.itin-tab').forEach((t,i)=>t.classList.toggle('active',i===idx));
+  document.querySelectorAll('.itin-panel').forEach((p,i)=>p.classList.toggle('active',i===idx));
+}
+
+
 (function(){
   const track = document.querySelector('.explore-scroll-track');
   if(!track) return;
